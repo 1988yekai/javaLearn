@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.org/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping resource="hibernate5need_java8/po/UserTable.hbm.xml"></mapping>
+
+    </session-factory>
+    <!--<session-factory>-->
+        <!--&lt;!&ndash; 配置连接数据库的基本信息 &ndash;&gt;-->
+        <!--!&#45;&#45; 数据库连接配置 &ndash;&gt;-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/test</property>-->
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password">root</property>-->
+
+        <!--&lt;!&ndash; 配置 hibernate 的基本信息 &ndash;&gt;-->
+        <!--&lt;!&ndash; hibernate 所使用的数据库方言 &ndash;&gt;-->
+        <!--<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>-->
+
+        <!--&lt;!&ndash; 执行操作时是否在控制台打印 SQL &ndash;&gt;-->
+        <!--<property name="show_sql">true</property>-->
+
+        <!--&lt;!&ndash; 是否对 SQL 进行格式化 &ndash;&gt;-->
+        <!--<property name="format_sql">true</property>-->
+
+        <!--&lt;!&ndash; 指定自动生成数据表的策略 &ndash;&gt;-->
+        <!--<property name="hbm2ddl.auto">update</property>-->
+
+        <!--&lt;!&ndash; 指定关联的 .hbm.xml 文件 &ndash;&gt;-->
+        <!--<mapping resource="hibernate5need_java8/po/UserTable.hbm.xml"/>-->
+
+    <!--</session-factory>-->
+</hibernate-configuration>

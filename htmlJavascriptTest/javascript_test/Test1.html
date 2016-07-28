@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript hibernate5need_java8</title>
+</head>
+<body>
+<script>
+
+    document.write("<h2 id='h2'>Good!</h2>");
+    document.write("<p>I begin learn Javascript!</p>");
+    function myFunction(){
+        var h2 = document.getElementById("h2");
+        h2.style.color="#ff0000";
+    }
+    function myFunction1() {
+        var h2 = document.getElementById("h2").value;
+        if (h2 =="" || isNaN(h2))
+            alert("not a number!");
+    }
+</script>
+
+<button onclick="myFunction()" type="button">点击这里</button>
+<button onclick="myFunction1()" type="button">点击这里1</button>
+</body>
+</html>
