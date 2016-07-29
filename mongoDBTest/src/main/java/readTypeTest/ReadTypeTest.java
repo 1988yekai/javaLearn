@@ -1,8 +1,6 @@
 package readTypeTest;
 
 import com.mongodb.MongoClient;
-import com.mongodb.ReadPreference;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -29,8 +27,9 @@ public class ReadTypeTest {
         MongoDatabase mongoDatabase = client.getDatabase("local");
         System.out.println("Connect to database successfully");
         // 获取集合
-        MongoCollection<Document> collection = mongoDatabase.getCollection("startup_log");
-        System.out.println("集合 startup_log 选择成功");
+//        MongoCollection<Document> collection = mongoDatabase.getCollection("startup_log");
+//        System.out.println("集合 startup_log 选择成功");
+
         MongoCollection<BsonDocument> bsonDocumentMongoCollection = mongoDatabase.getCollection("startup_log", BsonDocument.class);
         MongoCursor<BsonDocument> Cursor = bsonDocumentMongoCollection.find().iterator();
         while (Cursor.hasNext()) {
@@ -88,7 +87,7 @@ public class ReadTypeTest {
                 String string1 = getInDocType((BsonDocument) value);
                 stringBuilder.append(string1);
             }
-            if (value.getBsonType().toString().equals("DOCUMENT")) {
+            if (value.getBsonType().toString().equals("ARRAY")) {
                 stringBuilder.append("\n" + getInArrType((BsonArray) value));
             }
 
@@ -108,7 +107,7 @@ public class ReadTypeTest {
         System.out.println("-------------------------------------------------------");
         System.out.println(type);
         System.out.println("-------------------------------------------------------");
-        System.out.println(type.replaceAll("\n", ""));
+        System.out.println(type.replaceAll("\n", "").replaceAll("DOCUMENT","").replaceAll("ARRAY",""));
 
         closeClient();
 
