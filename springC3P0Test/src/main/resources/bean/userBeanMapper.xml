@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserMapper">
+    <resultMap id="userMap" type="bean.UserBean">
+        <!--id映射 -->
+        <id property="id" column="id" />
+        <!--普通属性映射 -->
+        <result property="name" column="name" />
+        <result property="birthday" column="birthday" />
+        <result property="sex" column="sex" />
+    </resultMap>
+
+    <select id="getById" parameterType="int" resultMap="userMap">
+        select *
+        from user_table where id = #{id}
+    </select>
+
+    <select id="count" resultType="int">
+        SELECT COUNT(*) FROM user_table
+    </select>
+
+</mapper>

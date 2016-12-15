@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.EnterpriseBeanMapper" >
+  <resultMap id="BaseResultMap" type="entity.EnterpriseBean" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="enterprise_name" property="enterpriseName" jdbcType="VARCHAR" />
+    <result column="legal_representative" property="legalRepresentative" jdbcType="VARCHAR" />
+    <result column="industry" property="industry" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="enterprise_website" property="enterpriseWebsite" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="registered_capital" property="registeredCapital" jdbcType="VARCHAR" />
+    <result column="registration_date" property="registrationDate" jdbcType="VARCHAR" />
+    <result column="business_term" property="businessTerm" jdbcType="VARCHAR" />
+    <result column="unified_credit_code" property="unifiedCreditCode" jdbcType="VARCHAR" />
+    <result column="organization_code" property="organizationCode" jdbcType="VARCHAR" />
+    <result column="registration_number" property="registrationNumber" jdbcType="VARCHAR" />
+    <result column="enterprise_type" property="enterpriseType" jdbcType="VARCHAR" />
+    <result column="registration_department" property="registrationDepartment" jdbcType="VARCHAR" />
+    <result column="collection_time" property="collectionTime" jdbcType="DATE" />
+    <result column="source_website" property="sourceWebsite" jdbcType="VARCHAR" />
+    <result column="source_url" property="sourceUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="entity.EnterpriseBean" extends="BaseResultMap" >
+    <result column="business_scope" property="businessScope" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, enterprise_name, legal_representative, industry, status, phone, email, enterprise_website, 
+    address, registered_capital, registration_date, business_term, unified_credit_code, 
+    organization_code, registration_number, enterprise_type, registration_department, 
+    collection_time, source_website, source_url
+  </sql>
+  <sql id="Blob_Column_List" >
+    business_scope
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from enterprise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enterprise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.EnterpriseBean" >
+    insert into enterprise (id, enterprise_name, legal_representative, 
+      industry, status, phone, 
+      email, enterprise_website, address, 
+      registered_capital, registration_date, business_term, 
+      unified_credit_code, organization_code, registration_number, 
+      enterprise_type, registration_department, 
+      collection_time, source_website, source_url, 
+      business_scope)
+    values (#{id,jdbcType=INTEGER}, #{enterpriseName,jdbcType=VARCHAR}, #{legalRepresentative,jdbcType=VARCHAR}, 
+      #{industry,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{enterpriseWebsite,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{registeredCapital,jdbcType=VARCHAR}, #{registrationDate,jdbcType=VARCHAR}, #{businessTerm,jdbcType=VARCHAR}, 
+      #{unifiedCreditCode,jdbcType=VARCHAR}, #{organizationCode,jdbcType=VARCHAR}, #{registrationNumber,jdbcType=VARCHAR}, 
+      #{enterpriseType,jdbcType=VARCHAR}, #{registrationDepartment,jdbcType=VARCHAR}, 
+      #{collectionTime,jdbcType=DATE}, #{sourceWebsite,jdbcType=VARCHAR}, #{sourceUrl,jdbcType=VARCHAR}, 
+      #{businessScope,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.EnterpriseBean" >
+    insert into enterprise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="enterpriseName != null" >
+        enterprise_name,
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative,
+      </if>
+      <if test="industry != null" >
+        industry,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="enterpriseWebsite != null" >
+        enterprise_website,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital,
+      </if>
+      <if test="registrationDate != null" >
+        registration_date,
+      </if>
+      <if test="businessTerm != null" >
+        business_term,
+      </if>
+      <if test="unifiedCreditCode != null" >
+        unified_credit_code,
+      </if>
+      <if test="organizationCode != null" >
+        organization_code,
+      </if>
+      <if test="registrationNumber != null" >
+        registration_number,
+      </if>
+      <if test="enterpriseType != null" >
+        enterprise_type,
+      </if>
+      <if test="registrationDepartment != null" >
+        registration_department,
+      </if>
+      <if test="collectionTime != null" >
+        collection_time,
+      </if>
+      <if test="sourceWebsite != null" >
+        source_website,
+      </if>
+      <if test="sourceUrl != null" >
+        source_url,
+      </if>
+      <if test="businessScope != null" >
+        business_scope,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseName != null" >
+        #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null" >
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseWebsite != null" >
+        #{enterpriseWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationDate != null" >
+        #{registrationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="businessTerm != null" >
+        #{businessTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="unifiedCreditCode != null" >
+        #{unifiedCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationNumber != null" >
+        #{registrationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseType != null" >
+        #{enterpriseType,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationDepartment != null" >
+        #{registrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionTime != null" >
+        #{collectionTime,jdbcType=DATE},
+      </if>
+      <if test="sourceWebsite != null" >
+        #{sourceWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceUrl != null" >
+        #{sourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        #{businessScope,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.EnterpriseBean" >
+    update enterprise
+    <set >
+      <if test="enterpriseName != null" >
+        enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null" >
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null" >
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseWebsite != null" >
+        enterprise_website = #{enterpriseWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null" >
+        registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationDate != null" >
+        registration_date = #{registrationDate,jdbcType=VARCHAR},
+      </if>
+      <if test="businessTerm != null" >
+        business_term = #{businessTerm,jdbcType=VARCHAR},
+      </if>
+      <if test="unifiedCreditCode != null" >
+        unified_credit_code = #{unifiedCreditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null" >
+        organization_code = #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationNumber != null" >
+        registration_number = #{registrationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseType != null" >
+        enterprise_type = #{enterpriseType,jdbcType=VARCHAR},
+      </if>
+      <if test="registrationDepartment != null" >
+        registration_department = #{registrationDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionTime != null" >
+        collection_time = #{collectionTime,jdbcType=DATE},
+      </if>
+      <if test="sourceWebsite != null" >
+        source_website = #{sourceWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceUrl != null" >
+        source_url = #{sourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="businessScope != null" >
+        business_scope = #{businessScope,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.EnterpriseBean" >
+    update enterprise
+    set enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      enterprise_website = #{enterpriseWebsite,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      registration_date = #{registrationDate,jdbcType=VARCHAR},
+      business_term = #{businessTerm,jdbcType=VARCHAR},
+      unified_credit_code = #{unifiedCreditCode,jdbcType=VARCHAR},
+      organization_code = #{organizationCode,jdbcType=VARCHAR},
+      registration_number = #{registrationNumber,jdbcType=VARCHAR},
+      enterprise_type = #{enterpriseType,jdbcType=VARCHAR},
+      registration_department = #{registrationDepartment,jdbcType=VARCHAR},
+      collection_time = #{collectionTime,jdbcType=DATE},
+      source_website = #{sourceWebsite,jdbcType=VARCHAR},
+      source_url = #{sourceUrl,jdbcType=VARCHAR},
+      business_scope = #{businessScope,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.EnterpriseBean" >
+    update enterprise
+    set enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      enterprise_website = #{enterpriseWebsite,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=VARCHAR},
+      registration_date = #{registrationDate,jdbcType=VARCHAR},
+      business_term = #{businessTerm,jdbcType=VARCHAR},
+      unified_credit_code = #{unifiedCreditCode,jdbcType=VARCHAR},
+      organization_code = #{organizationCode,jdbcType=VARCHAR},
+      registration_number = #{registrationNumber,jdbcType=VARCHAR},
+      enterprise_type = #{enterpriseType,jdbcType=VARCHAR},
+      registration_department = #{registrationDepartment,jdbcType=VARCHAR},
+      collection_time = #{collectionTime,jdbcType=DATE},
+      source_website = #{sourceWebsite,jdbcType=VARCHAR},
+      source_url = #{sourceUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

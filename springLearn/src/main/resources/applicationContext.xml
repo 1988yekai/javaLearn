@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!--<context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+
+        <property name="initialPoolSize" value="${jdbc.initPoolSize}"/>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+    </bean>-->
+    <bean id="helloWorld" class="bean.HelloWorld">
+        <property name="name" value="String"></property>
+    </bean>
+    <bean id="hello1" class="bean.HelloWorld" p:name="spring"></bean>
+
+    <bean id="person" class="bean.Person">
+        <property name="name">
+            <value>tom</value>
+        </property>
+        <property name="car">
+            <bean class="bean.Car">
+                <constructor-arg name="name" value="Ford"></constructor-arg>
+                <constructor-arg name="price" value="100000"></constructor-arg>
+            </bean>
+        </property>
+        <property name="car.name" value="Changan"></property>
+    </bean>
+
+    <util:list id="persons">
+        <ref bean="person"></ref>
+        <ref bean="person"></ref>
+    </util:list>
+
+    <!-- bean继承 -->
+    <bean id="car1" class="bean.Car" p:name="car123" p:price="200000" scope="singleton"></bean>
+    <bean id="car" abstract="true" class="bean.Car">
+        <property name="name" value="carParent"></property>
+        <property name="price" value="10"></property>
+    </bean>
+    <bean id="car2" class="bean.Car" parent="car"></bean>
+</beans>

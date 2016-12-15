@@ -39,7 +39,7 @@
         <!--<property name="hbm2ddl.auto">update</property>-->
 
         <!--&lt;!&ndash; 指定关联的 .hbm.xml 文件 &ndash;&gt;-->
-        <!--<mapping resource="hibernate5need_java8/po/UserTable.hbm.xml"/>-->
+        <!--<mapping resource="test1/po/UserTable.hbm.xml"/>-->
 
     <!--</session-factory>-->
 </hibernate-configuration>

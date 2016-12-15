@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.org/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="test1.po">
+
+    <class name="UserTable" table="USER_TABLE" dynamic-insert="true">
+
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <!-- 指定主键的生成方式, native: 使用数据库本地方式 -->
+            <generator class="native" />
+        </id>
+
+        <property name="name" not-null="true"
+                  type="java.lang.String" column="name" >
+        </property>
+
+        <property name="sex" type="java.lang.String"
+                  index="news_index">
+            <column name="SEX" />
+        </property>
+
+        <property name="birthday" type="date">
+            <column name="birthday" />
+        </property>
+
+    </class>
+
+</hibernate-mapping>

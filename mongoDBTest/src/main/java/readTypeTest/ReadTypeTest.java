@@ -101,13 +101,14 @@ public class ReadTypeTest {
     @Test
     public void test1() {
         BsonDocument bsonDocument = getBsonDocument();
-        System.out.println(bsonDocument.toString());
-
+//        System.out.println(bsonDocument.toString());
+//
         String type = getInDocType(bsonDocument);
-        System.out.println("-------------------------------------------------------");
+        type = type.replaceAll("\n", "").replaceAll("DOCUMENT","").replaceAll("ARRAY","");
+//        System.out.println("-------------------------------------------------------");
+//        System.out.println(type);
+//        System.out.println("-------------------------------------------------------");
         System.out.println(type);
-        System.out.println("-------------------------------------------------------");
-        System.out.println(type.replaceAll("\n", "").replaceAll("DOCUMENT","").replaceAll("ARRAY",""));
 
         closeClient();
 

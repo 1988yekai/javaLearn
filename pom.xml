@@ -16,6 +16,10 @@
         <module>redisTest</module>
         <module>hibernate4Test</module>
         <module>mongoDBTest</module>
+        <module>springC3P0Test</module>
+        <module>mybatisGeneratorTest</module>
+        <module>springLearn</module>
+        <module>SwingTest</module>
     </modules>
 
     <dependencies>
