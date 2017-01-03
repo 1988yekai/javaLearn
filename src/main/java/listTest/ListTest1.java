@@ -2,6 +2,7 @@ package listTest;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Administrator on 2016-6-20.
@@ -18,5 +19,10 @@ public class ListTest1 {
         System.out.println(list1.size());
         System.out.println(list1);
 
+        ListIterator iterator = list1.listIterator();
+        iterator.next();
+        iterator.add("good");
+
+        System.out.println(list1);
     }
 }

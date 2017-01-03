@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>       <!-- 配置数据库连接信息 -->
+            <dataSource type="com.yek.beans.C3P0DataSourceFactory">
+                <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+                <property name="jdbcUrl" value="jdbc:mysql://172.16.0.91:3306/test"/>
+                <property name="user" value="root"/>
+                <property name="password" value="root3306"/>
+
+
+
+                <property name="idleConnectionTestPeriod" value="60" />
+                <property name="maxPoolSize" value="20" />
+                <property name="maxIdleTime" value="600" />
+                <property name="preferredTestQuery" value="SELECT 1" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 注册userMapper.xml文件，     userMapper.xml位于me.gacl.mapping这个包下，所以resource写成me/gacl/mapping/userMapper.xml-->
+    <mappers>
+        <mapper resource="com\yek\beans\UserBeanMapper.xml"/>
+
+        <!-- 注解方式，简单sql用 -->
+        <!--<mapper class="mapperBean.UserMapper"></mapper>-->
+    </mappers>
+</configuration>
