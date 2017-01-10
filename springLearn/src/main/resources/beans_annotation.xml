@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!--指定spring IOC 容器扫描的包
+    1.
+    <context:component-scan base-package="annotation" resource-pattern="*.class"/>
+    只能扫描到 TestObject 这个类，resource-pattern资源过滤属性。
+    2. use-default-filters="false" 不使用默认的filter，使用指定的include-filter
+     <context:component-scan base-package="annotation" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"></context:include-filter>
+    </context:component-scan>
+    3. 排除Component
+    <context:component-scan base-package="annotation">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"></context:exclude-filter>
+    </context:component-scan>
+    -->
+    <context:component-scan base-package="annotation">
+        <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Component"></context:exclude-filter>-->
+    </context:component-scan>
+
+    <context:component-scan base-package="annotationGeneric">
+
+    </context:component-scan>
+</beans>

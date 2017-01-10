@@ -20,6 +20,7 @@
         <module>mybatisGeneratorTest</module>
         <module>springLearn</module>
         <module>SwingTest</module>
+        <module>seleniumSnapshot</module>
     </modules>
 
     <dependencies>
