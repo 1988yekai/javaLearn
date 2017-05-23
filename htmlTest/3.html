@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta name="keywords" content="四川省公共资源交易中心,四川省公共资源交易信息网,四川省公共资源电子交易平台,四川公共资源交易,四川公共资源交易服务平台" />
+    <meta name="description" content="" />
+    <title>四川省公共资源交易服务平台</title>
+    <link rel="stylesheet" href="/content/css/Master.css" />
+    <script type="text/javascript" src="/content/js/jquery-1.5.min.js"></script>
+
+    <script type="text/javascript">
+        function findWeather() {
+            var cityUrl = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+            $.getScript(cityUrl, function (script, textStatus, jqXHR) {
+                var citytq = remote_ip_info.city;// 获取城市
+                var url = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + citytq + "&day=0&dfc=3";
+                $.ajax({
+                    url: url,
+                    dataType: "script",
+                    scriptCharset: "gbk",
+                    success: function (data) {
+                        var _w = window.SWther.w[citytq][0];
+                        var _f = _w.f1 + "_0.png";
+                        if (new Date().getHours() > 17) {
+                            _f = _w.f2 + "_1.png";
+                        }
+                        var img = "<img width='16px' height='16px' src='http://i2.sinaimg.cn/dy/main/weather/weatherplugin/wthIco/20_20/" + _f
+                                + "' />";
+                        var tq = citytq + " " + img + " " + _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃  " + _w.d1 + _w.p1 + "级";
+                        //#weather自己修改,天气样式自己打断点调试
+                        $('#weather').html(tq);
+                    }
+                });
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<div class="masterTop">
+    <div class="topMenu">
+        <div class="width1K">
+
+            <div class="userOpts">
+                <a href="/Xxbs/Login">登录</a>
+                <a href="/Reg">注册</a>
+            </div>
+
+            <div id="masterClock"></div>
+            <script type="text/javascript">
+                function showLeftTime() {
+                    var now = new Date();
+                    var year = now.getFullYear();
+                    var month = now.getMonth() + 1;
+                    var date = now.getDate();
+                    var hours = now.getHours();
+                    if (hours < 10)
+                        hours = "0" + hours;
+                    var minutes = now.getMinutes();
+                    if (minutes < 10)
+                        minutes = "0" + minutes;
+                    var seconds = now.getSeconds();
+                    if (seconds < 10)
+                        seconds = "0" + seconds;
+                    var day;
+                    switch (now.getDay()) {
+                        case 0:
+                            day = "日";
+                            break;
+                        case 1:
+                            day = "一";
+                            break;
+                        case 2:
+                            day = "二";
+                            break;
+                        case 3:
+                            day = "三";
+                            break;
+                        case 4:
+                            day = "四";
+                            break;
+                        case 5:
+                            day = "五";
+                            break;
+                        case 6:
+                            day = "六";
+                            break;
+
+                    }
+                    document.getElementById("masterClock").innerHTML = "" + year + "年" + month + "月" + date + "日 " + hours + ":" + minutes + ":" + seconds + " 星期" + day;
+                    var timeID = setTimeout(showLeftTime, 1000);
+                }
+                showLeftTime();
+            </script>
+            <div id="weather" style=" float:right;margin-right:80px"></div>
+        </div>
+    </div>
+    <div class="topBanner">
+    </div>
+    <div class="topBottomMenu">
+        <div class="width1K">
+            <div class="channelList">
+                <ul>
+                    <li><a href="/">网站首页</a></li>
+                    <li><a href="/Home/jyxx2">交易信息</a></li>
+                    <li><a href="/Reg">统一注册</a></li>
+                    <li><a href="/Home/jybz">交易保障</a></li>
+                    <li><a href="/Home/ztzxlist">主体资信</a></li>
+                    <li><a href="/Home/jyzk">交易智库</a></li>
+                    <li><a href="/Home/scdt">市场动态</a></li>
+                    <li class="noBg"><a href="/Home/zhjg">综合监督</a></li>
+                </ul>
+            </div>
+            <div class="searchArea">
+                <input type="text" id="searchText" /><input type="button" style="height:19px;" /><a href="javascript:;" id="searchBtn">搜索</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="MasterMid" id="MasterMid">
+
+    <link rel="stylesheet" href="/content/css/second.css" />
+
+    <div class="width1K topbg">
+        <img src="/content/imgs/jyxx2_03.png" />
+    </div>
+    <div class="width1K secondMain">
+        <div class="secondTitle">
+            交易信息
+        </div>
+        <div class="clear"></div>
+
+
+
+        <style>
+            .projecttitle {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                line-height: 30px;
+                position: relative;
+            }
+
+            .projecttitle a {
+                position: absolute;
+                right: 30px;
+                cursor: pointer;
+                top: 10px;
+            }
+
+            .projecttitle small {
+                font-size: 14px;
+                color: #888;
+            }
+
+            .projectcontent {
+                padding: 10px 40px;
+                font-size: 14px;
+                font-family: "微软雅黑";
+            }
+
+            .shortDiv {
+                width: 50%;
+                display: inline-block;
+            }
+
+            .projectcontent .projectcontentarea {
+                padding: 5px 0;
+            }
+
+            .tabares {
+                padding: 10px 40px;
+            }
+
+            .tabs {
+                padding: 10px 0 0 0;
+            }
+
+            .tabs .tab {
+                margin-bottom: -1px;
+                font-size: 16px;
+                text-align: center;
+                display: inline-block;
+                padding: 8px 30px;
+                cursor: default;
+            }
+
+            .tabs .active {
+                border: 1px solid #43A2DC;
+                border-bottom: 0;
+                color: #025FA4;
+                background: #fff;
+            }
+
+            .contents {
+                border: 1px solid #43A2DC;
+            }
+
+            .contents .content {
+                display: none;
+                padding: 10px 0;
+                min-height: 400px;
+            }
+
+            .sectiontitle {
+                text-align: left;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .sectiontitle small {
+                color: #888;
+            }
+
+            .tenderC {
+                display: none;
+            }
+        </style>
+        <div>
+            <div class="projecttitle">前锋区残疾人托养中心建设工程<br /><small>项目编号:-20170224-095(GC)　　　创建时间:2017/3/30 15:12:38</small></div>
+            <div class="projectcontent">
+                <div class="projectcontentarea">项目地址 : 无</div>
+                <div class="shortDiv projectcontentarea">项目行业分类 : </div><div class="shortDiv">项目所属地区 :广安市 </div>
+                <div class="shortDiv projectcontentarea">项目类型 :  市政</div>
+                <div class="shortDiv projectcontentarea">
+                    项目规模 :
+                    无        </div>
+
+                <div class="shortDiv">
+                    资金来源 :政府
+                </div>
+                <div class="shortDiv projectcontentarea">
+                    联系人 :
+                    刘先生        </div>
+                <div class="shortDiv">
+                    联系人电话 : 0826-2883213        </div>
+            </div>
+            <div class="tabares">
+                <div class="tabs">
+                    <div class="tab">招标公告</div><div class="tab">公告变更</div><div class="tab">开标记录</div><div class="tab">评标公示</div><div class="tab">中标公告</div><div class="tab">签约履行</div>
+                </div>
+                <div class="contents">
+
+                    <div class="content">
+                        <div>
+                            <div class="projecttitle tenderT" nid="0a3c6c9c-8391-4b64-b8f1-2aa7c996bfda">
+                                前锋区残疾人托养中心建设工程<br />
+                                <small>2017/2/28 0:00:00</small>
+                                <a>-</a>
+                            </div>
+
+                            <div class="projectcontent tenderC" nid="0a3c6c9c-8391-4b64-b8f1-2aa7c996bfda-1" style="display:block">
+                                <div class="projectcontentarea">
+                                    <div><![CDATA[<div>前锋区残疾人托养中心建设工程 <BR>招标公告 <BR>1. 招标条件 <BR>1.1 本招标项目前锋区残疾人托养中心建设工程已由广安市前锋区发展和改革局 以 前区发改项 【2015】221号 批准建设，项目业主为 广安市前锋区残疾人联合会建设资金来自上级补助资金和区级财政资金，项目出资比例为 100% ，招标人为广安市前锋区残疾人联合会。项目已具备招标条件，现对该项目的进行公开招标。 <BR>1.2 本招标项目为四川省行政区域内的国家投资工程建设项目，广安市前锋区发展和改革局 核准（招标事项核准文号为 前区发改项 【2015】221号）的招标组织形式为 委托招标 。招标人选择（本招标项目在省发展改革委指定比选网站上的项目编号为 HG20150724005）的招标代理机构是四川大道工程项目管理有限公司。 <BR>2. 项目概况与招标范围 <BR>2.1 建设地点：广安市前锋区前锋镇六角丘社区 <BR>2.2 建设规模：项目占地面积5亩，总建筑面积3792㎡，设置寄宿托养床位64张，日间照料人数33人，配套建设残疾人综合服务设施890㎡ 。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <BR>2.3计划工期：450日历天 <BR>2.4 招标范围：详见工程量清单及施工图 <BR>2.5 标段划分：施工一个标段。 <BR>3. 投标人资格要求 <BR>3.1&nbsp; 本次施工招标要求投标人须具备独立的法人资格，国家建设行政主管部门颁发的建筑工程施工总承包叁级及以上资质，0的类似项目业绩，并在人员、设备、资金等方面具有相应的能力。 <BR>3.2、本次投资人招标不接受联合体投标。 <BR>3.3、各投标人均可就上述标段投标，但可以中标的合同数量不超过1个标段。 <BR>4. 招标文件的获取 <BR>&nbsp;&nbsp;&nbsp; 4.1 凡有意参加投标者，请于2017年2月28日00时00分（北京时间，下同）至2017年3月4日23 时59分，登陆广安公共资源交易网（网址：www.gasggzy.com)，凭注册时企业领取的身份认证数字证书(CA)购买招标文件；未在广安公共资源交易网完成网上注册的企业，按企业注册流程完成注册并领取企业身份认证数字证书(CA)后，方可按以上要求购买招标文件，此为获取招标文件唯一途径。 <BR>4.2 招标人不提供邮购招标文件服务。 <BR>5.投标文件的递交 <BR>5.1 投标文件递交的截止时间（投标截止时间，下同）为2017年3月21日 09时 30分，地点为 广安市公共资源交易中心（广安市广安区河堰路170号）本项目开标室 。 <BR>5.2 逾期送达的或者未送达指定地点的投标文件，招标人不予受理。 <BR>6.发布公告的媒介 <BR>本次招标公告将在四川省公共资源交易信息网、广安公共资源交易网上发布。 <BR>7.联系方式 <BR>招 标 人：广安市前锋区残疾人联合会&nbsp;&nbsp;&nbsp;&nbsp; <BR>地&nbsp;&nbsp;&nbsp; 址：广安市前锋区鑫鸿路8号 <BR>邮&nbsp;&nbsp;&nbsp; 编：/ <BR>联 系 人：刘先生&nbsp;&nbsp;&nbsp; <BR>电&nbsp;&nbsp;&nbsp; 话：0826-2883213 <BR>传&nbsp;&nbsp;&nbsp; 真：0826-2883213 <BR><BR>招标代理机构：四川大道工程项目管理有限公司 <BR>地&nbsp;&nbsp;&nbsp;&nbsp; 址：成都市武侯区天和路9号1单元0711号 <BR>&nbsp;&nbsp;&nbsp; 邮&nbsp;&nbsp;&nbsp;&nbsp; 编：&nbsp;&nbsp; /&nbsp;&nbsp; <BR>联&nbsp; 系 人：盘先生 <BR>&nbsp;&nbsp;&nbsp; 电&nbsp;&nbsp;&nbsp;&nbsp; 话：15182037335 <BR>传&nbsp;&nbsp;&nbsp;&nbsp; 真： / <BR><BR><BR><BR>二○一六年十一月 <BR></div>]]></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></![CDATA[<div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                        </div>
+                        <div class="content">
+                        </div>
+                        <div class="content">
+                        </div>
+                        <div class="content">
+                            <div class="projecttitle tenderT" nid="8cbc06f1-2714-4380-90b0-95be72f0f422">前锋区残疾人托养中心建设工程中标公示<br /><small>2017/4/14 0:00:00</small><a>-</a></div>
+                            <div class="projectcontent tenderC" nid="8cbc06f1-2714-4380-90b0-95be72f0f422-1" style="display:block">
+                                <div class="projectcontentarea">
+                                    <div><![CDATA[<div><EPOINTFORM><A name=Sheet1></A>
+                                        <TABLE id=_Sheet1 style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; COLOR: #000000" cellSpacing=0 cellPadding=0 width=706 align=center border=0>
+                                            <TBODY>
+                                            <TR style="FONT-SIZE: 0px; LINE-HEIGHT: 0px">
+                                                <TD width=81>&nbsp;</TD>
+                                                <TD width=75>&nbsp;</TD>
+                                                <TD width=80>&nbsp;</TD>
+                                                <TD width=75>&nbsp;</TD>
+                                                <TD width=75>&nbsp;</TD>
+                                                <TD width=75>&nbsp;</TD>
+                                                <TD width=75>&nbsp;</TD>
+                                                <TD width=95>&nbsp;</TD>
+                                                <TD width=75>&nbsp;</TD></TR>
+                                            <TR height=25>
+                                                <TD style="FONT-SIZE: 15pt; FONT-FAMILY: 黑体; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px" colSpan=9>前锋区残疾人托养中心建设工程中标候选人公示</TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>项目及标段名称</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=7>前锋区残疾人托养中心建设工程</TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>项目业主</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>广安市前锋区残疾人联合会</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>项目业主联系电话</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>0826-2883213</TD></TR>
+                                            <TR height=25>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>招标人</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>广安市前锋区残疾人联合会</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>招标人联系电话</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>0826-2883213</TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>招标代理机构</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>四川大道工程项目管理有限公司</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>招标代理机构联系电话</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>15182037335</TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>开标地点</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>广安市公共资源交易中心本项目开标室</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>开标时间</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>2017/4/12 9:30</TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>公示期</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>2017-4-14&nbsp;至&nbsp;2017-4-18</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>投标最高限价(元)</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>5508968</TD></TR>
+                                            <TR height=25>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" rowSpan=2>中标候选人及排序</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" rowSpan=2 colSpan=2>中标候选人名称</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" rowSpan=2 colSpan=2>投标报价（元）</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" rowSpan=2 colSpan=2>经评审的投标价（元）</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" rowSpan=2 colSpan=2>综合评标得分 </TD></TR>
+                                            <TR height=25></TR>
+                                            <TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>第一</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川畅越水利水电工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4489666</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4218323</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>第二</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川枫盛建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4599986</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4226452</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>第三</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川正川水电工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4473282</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4249530</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR>
+                                            <TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第一中标候选人项目管理机构主要人员(四川畅越水利水电工程有限公司)</TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' rowSpan=2>职务</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' rowSpan=2 colSpan=2>姓名</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>执业或职业资格</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>职称</TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>证书名称</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>证书编号</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>职称专业</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>级别</TD></TR><TR height=30><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目负责人&nbsp;</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>张高飞</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>二级建造师</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>川251101137219</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'></TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第二中标候选人项目管理机构主要人员(四川枫盛建设工程有限公司)</TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' rowSpan=2>职务</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' rowSpan=2 colSpan=2>姓名</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>执业或职业资格</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>职称</TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>证书名称</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>证书编号</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>职称专业</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>级别</TD></TR><TR height=30><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目负责人&nbsp;</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>吴永国</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>二级建造师</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>川251121367633</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'></TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第三中标候选人项目管理机构主要人员(四川正川水电工程有限公司)</TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' rowSpan=2>职务</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' rowSpan=2 colSpan=2>姓名</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>执业或职业资格</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>职称</TD></TR><TR height=25><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>证书名称</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>证书编号</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>职称专业</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>级别</TD></TR><TR height=30><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目负责人&nbsp;</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>张庆</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>二级建造师</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>川251111242019</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'></TD></TR>
+                                            <TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第一中标候选人类似业绩(四川畅越水利水电工程有限公司)</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目业主</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>项目名称 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>开工日期 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>交工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>竣工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>建设规模</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>合同价格（元）</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目负责人</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第一中标候选人项目负责人类似业绩(四川畅越水利水电工程有限公司)</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目业主</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>项目名称 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>开工日期 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>交工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>竣工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>建设规模</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>合同价格（元）</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>技术负责人</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第二中标候选人类似业绩(四川枫盛建设工程有限公司)</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目业主</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>项目名称 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>开工日期 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>交工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>竣工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>建设规模</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>合同价格（元）</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目负责人</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第二中标候选人项目负责人类似业绩(四川枫盛建设工程有限公司)</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目业主</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>项目名称 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>开工日期 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>交工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>竣工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>建设规模</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>合同价格（元）</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>技术负责人</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第三中标候选人类似业绩(四川正川水电工程有限公司)</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目业主</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>项目名称 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>开工日期 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>交工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>竣工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>建设规模</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>合同价格（元）</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目负责人</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=9>第三中标候选人项目负责人类似业绩(四川正川水电工程有限公司)</TD></TR><TR height=26><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>项目业主</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>项目名称 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>开工日期 </TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>交工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>竣工日期</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>建设规模</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>合同价格（元）</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px'>技术负责人</TD></TR>
+                                            <TR height=25>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=9>其他投标人（除中标候选人之外的）评审情况</TD></TR>
+                                            <TR height=97>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>投标人名称 </TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>投标报价（元）<BR>或<BR>否决投标依据条款（投标文件被认定为不合格所依据的招标文件评标办法中的评审因素和评审标准的条款）<BR></TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>经评审的投标价（元）<BR>或<BR>否决投标理由（投标文件被认定为不合格的具体事实,不得简单地表述为未响应招标文件实质性内容、某处有问题等）<BR></TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>综合评标得分<BR>或<BR>备&nbsp;注<BR></TD></TR>
+                                            <TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川远达水利工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4319031</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>低控制价90％，低有效投标人评标价平均价95％</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川驰盟建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4407174</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>低控制价90％，低有效投标人评标价平均价95％</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川智星工程建设咨询有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4479451</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>低控制价90％，低有效投标人评标价平均价95％</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川金能达建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4803820</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4803820</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川和胜建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4599966</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4599966</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川圣景建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4682787</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4682787</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>中远宏发国际建工集团有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4624711</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4624711</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川吉凯瑞建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4934723</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4934723</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川得友建工集团有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4893672</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4893672</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川大地春色园林绿化工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4824548</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4824548</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川荣冠建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4867882</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4867882</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>广安三立建设有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4467773</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4467773</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川宏瑞福建筑劳务有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4666666</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4666666</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>广安市广安区第二建筑公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4876460</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4876460</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川杰邦建筑有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4566617</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4566617</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>果城建工集团有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4886903</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4886903</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川鑫铭建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4765257</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4765257</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川盛鑫建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4621434</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4621434</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川红逸建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4731652</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4731652</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川弘涛建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4538642</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4538642</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川金至建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4566617</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4566617</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川广安佳霖建筑工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4823155</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4823155</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR><TR><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>四川春华建设工程有限公司</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2>4777928</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=3>4777928</TD><TD style='BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px' colSpan=2></TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>其他需说明事项</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=7></TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>评标委员会成员名单</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=7><A name=子网格></A>
+                                                    <TABLE id=_Sheet1_60_2 style="FONT-SIZE: 9pt; FONT-FAMILY: 宋体; BORDER-COLLAPSE: collapse; TABLE-LAYOUT: fixed; COLOR: #000000" cellSpacing=0 cellPadding=0 width=258 border=0>
+                                                        <TBODY>
+                                                        <TR style="FONT-SIZE: 0px; LINE-HEIGHT: 0px">
+                                                            <TD width=130>&nbsp;</TD>
+                                                            <TD width=130>&nbsp;</TD></TR>
+                                                        <TR><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px' width=130>姓名：陈祖贵</TD><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px'>单位：/</TD></TR><TR><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px' width=130>姓名：刘海燕</TD><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px'>单位：/</TD></TR><TR><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px' width=130>姓名：李雪丽</TD><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px'>单位：/</TD></TR><TR><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px' width=130>姓名：郭科祥</TD><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px'>单位：/</TD></TR><TR><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px' width=130>姓名：刘逊</TD><TD style='PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px'>单位：/</TD></TR>
+                                                        </TBODY></TABLE></TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" rowSpan=2 colSpan=2>监督部门名称及监督电话</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px">项目审批部门</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>&nbsp;前锋区发改局</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px">联系电话</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>&nbsp;/</TD></TR>
+                                            <TR height=31>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px">行业主管部门</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=3>&nbsp;前锋区住建局</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px">联系电话</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>&nbsp;/</TD></TR>
+                                            <TR>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=2>异议投诉注意事项</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=7>1.投标人或者其他利害关系人对依法必须进行招标的项目的评标结果有异议的，应当在中标候选人公示期间提出。招标人应当自收到异议之日起3日内作出答复；作出答复前，应当暂停招标投标活动。<BR>2.投标人或者其他利害关系人认为评标结果不符合法律、行政法规规定的，可以自知道或者应当知道之日起10日内向有关行政监督部门投诉。投诉前应当先向招标人提出异议，异议答复期间不计算在前款规定的期限内。投诉书应当符合《工程建设项目招标投标活动投诉处理办法》规定。<BR>3.对评标结果的投诉，涉及投标人弄虚作假骗取中标的由行业主管部门负责受理，涉及评标错误或评标无效的由项目审批部门负责受理。<BR>4.投诉人就同一事项向两个以上有权受理的行政监督部门投诉的，由最先收到投诉的行政监督部门负责处理。<BR>5.应先提出异议没有提出异议，超过投诉时效等不符合受理条件的投诉，有关行政监督部门不予受理；<BR>投诉人故意捏造事实、伪造证明材料或者以非法手段取得证明材料进行投诉，给他人造成损失的，依法承担赔偿责任。<BR></TD></TR>
+                                            <TR height=161>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=4>招标人主要负责人签字、盖章:</TD>
+                                                <TD style="BORDER-TOP: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: #000000 1px solid; PADDING-RIGHT: 2px" colSpan=5>招标代理机构主要负责人签字、盖章： </TD></TR>
+                                            <TR height=357>
+                                                <TD style="BORDER-TOP: #000000 1px solid; VERTICAL-ALIGN: top; PADDING-BOTTOM: 2px; TEXT-ALIGN: left; PADDING-TOP: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px" colSpan=9>注：1.实行电子评标的，中标候选人公示的内容作为评标报告的一部分，由评标软件自动生成，评标委员会复核，招标人或其委托的招标代理机构电子签名和签章确认；还没有实行电子评标的，招标人应根据公示标准文本要求，严格按评标报告和投标文件真实完整地填报公示信息，不得隐瞒、歪曲应当公示的信息，并对填写的中标候选人公示内容的完整性、真实性、准确性和一致性负责。表中所有空格内容均须填写，不得空白，如确实不须填写或无法填写，应在空格中填写“无”。<BR>&nbsp;&nbsp;&nbsp;&nbsp;2.中标候选人是联合体的，“中标候选人名称”中联合体各方的名称均应填写。<BR>&nbsp;&nbsp;&nbsp;&nbsp;3.表中的“中标候选人类似业绩”和“中标候选人项目负责人类似业绩”&nbsp;应填写中标候选人在投标文件中所附所有业绩。<BR>&nbsp;&nbsp;&nbsp;&nbsp;4.表中的“项目负责人”施工招标指项目经理、&nbsp;监理招标指项目总监等；表中的“项目技术负责人”是指项目主要技术人员或项目总工，如设计中只有多个专业技术负责人，应都作为项目技术负责人，扩展表格，分别填写。<BR>&nbsp;&nbsp;&nbsp;&nbsp;5.表中的“开工日期”和“交工日期”、“竣工日期”是指实际开工日期和实际交工日期、实际竣工日期。勘察、设计招标应填写其勘察、设计服务期的起（开工日期）止（交工日期）日期（不含施工服务期）。监理招标应填写其监理服务期的起（开工日期）止（竣工日期）日期（不含竣工验收后服务期）。采购招标应填写采购供货的起（开工日期）止（交工日期）日期。施工招标的开工日期、竣工日期是指《中华人民共和国标准施工招标文件》（2007年版）中“通用合同条款”定义的时期；交工是指《公路工程竣（交）工验收办法》等规定的交工，已交工未竣工的，填交工日期，已经竣工的，交工日期和竣工时期都要填写；没有交工程序的，填“无”。<BR>&nbsp;&nbsp;&nbsp;&nbsp;6.日期（年月日）的格式统一以阿拉伯数字表示。如：2015年9月1日，填写为20150901；&nbsp;2015年9月，填写为201509；&nbsp;2015年，填写为2015；2015/9/15&nbsp;9:00:00填写为20150915－9:00:00。<BR>&nbsp;&nbsp;&nbsp;&nbsp;7.表中的“合同价格”，是指承包人按合同约定完成了包括缺陷责任期内的全部承包工作后，发包人应付给承包人的金额，包括在履行合同过程中按合同约定进行的变更和调整。元指人民币元。<BR>&nbsp;&nbsp;&nbsp;&nbsp;8.表中的“建设规模”采购招标应填写主要货物的数量、类型、规格等技术参数。<BR>&nbsp;&nbsp;&nbsp;&nbsp;9.参与投标的所有投标人都需要公示，除中标候选人之外，其他投标人在“其他投标人（除中标候选人之外的）评审情况”中填写。没有被否决的投标，填写投标人名称、投标报价（元）、经评审的投标价（元）、综合评标得分；被否决的投标，填写投标人名称、否决投标依据条款、否决投标理由、备注。<BR>&nbsp;&nbsp;&nbsp;&nbsp;10.所有的评标委员会成员（含业主评标代表）都需要填写；评标委员会成员有多个单位的，都需要填写。<BR>&nbsp;&nbsp;&nbsp;&nbsp;11.中标候选人公示纸质文本招标人须加盖单位公章，多页还应加盖骑缝章。<BR></TD></TR></TBODY></TABLE></EPOINTFORM></div>]]></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></BR></![CDATA[<div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+
+                    $(".tabares").children(".tabs").children().eq(4).addClass("active");
+                    $(".tabares").children(".contents").children().eq(4).show();
+                    $(".tabares").each(function () {
+                        $(this).children(".contents").children().eq($(this).children(".tabs").children(".active").index()).show();
+                        $(this).children(".tabs").children(".tab").click(function () {
+                            $(this).parent().parent().children(".contents").children().hide();
+                            $(this).parent().parent().children(".contents").children().eq($(this).index()).show();
+                            $(this).parent().children().removeClass("active");
+                            $(this).addClass("active");
+                        });
+                    });
+                    $(".tenderT").each(function () {
+                        $(this).click(function () {
+                            if ($(this).children("a").html() == "+") {
+                                $(this).parent().children(".tenderC").hide();
+                                $("div[nid='" + $(this).attr("nid") + "-1']").show();
+                                $(this).parent().children(".tenderT").children("a").html("+");
+                                $(this).children("a").html("-");
+                            } else {
+                                $("div[nid='" + $(this).attr("nid") + "-1']").hide();
+                                $(this).children("a").html("+");
+                            }
+                        });
+                    });
+                </script>
+
+
+            </div>
+        </div>
+
+
+
+
+        <div class="MasterBottom">
+            <div class="width1K dh">
+                快速导航
+                <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                    <option value="">省级平台</option>
+                    <option value="http://www.spprec.com">省中心</option>
+                    <option value="http://www.cebpubservice.com/">中国招标投标</option>
+                </select>
+                <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                    <option value="">市州平台</option>
+                    <option value="http://www.bzggzy.gov.cn">巴中市</option>
+                </select>
+                <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                    <option value="">外省平台</option>
+                    <option value="http://www.hbggzyfwpt.cn">湖北省</option>
+                    <option value="http://www.hebpr.cn">河北省</option>
+                    <option value="http://www.hnsggzy.com">湖南省</option>
+                    <option value="http://www.gzjyfw.gov.cn">贵州省</option>
+                </select>
+                <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                    <option value="">友情链接</option>
+                    <option value="http://www.ggzy.gov.cn/">国家交易平台</option>
+                </select>
+            </div>
+            <div class="footer">
+                Copy right 2016 fw.scztb.gov.cn All Rights Reserved<br />
+                版权所有:四川省政务服务和公共资源交易服务中心&nbsp;&nbsp;备案|许可证编号:蜀ICP备1202408<br />
+                技术支持:四川省政务服务和公共资源交易服务中心<br />
+                联系电话:028-86955567<br />
+                为了获得更好的浏览效果,建议您使用IE8.0及以上版本浏览器登录本站点
+                <script>
+                    var _hmt = _hmt || [];
+                    (function () {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?db7398697b7b9b3921804c4f8bb2a686";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+
+            </div>
+        </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(
+            findWeather()
+    );
+
+    $(".dh").children("select").change(function () {
+        window.open($(this).val());
+    });
+    $("#searchBtn").click(function () {
+        if ($("#searchText").val() != null && $("#searchText").val() != "")
+            location.href = '/Home/artList?page=1&keyword=' + $("#searchText").val();
+
+    });
+    function jsonDateFormat(jsonDate) {//json日期格式转换为正常格式
+        try {//出自http://www.cnblogs.com/ahjesus 尊重作者辛苦劳动成果,转载请注明出处,谢谢!
+            var date = new Date(parseInt(jsonDate.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+            var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+            var milliseconds = date.getMilliseconds();
+            return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+        } catch (ex) {
+            return "";
+        }
+    }
+</script>

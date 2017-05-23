@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<GlobalOption>
+
+    <!--///?????-->
+    <browserSettings>
+        <maxAllowedParallelBrowserLimit>2</maxAllowedParallelBrowserLimit>
+        <waitForAvailableBrowserSleepSeconds>2</waitForAvailableBrowserSleepSeconds>
+        <browserType>Htmlunit</browserType>
+        <browserDriverPath>tools/chromedriver.exe</browserDriverPath>
+        <pageLoadTimeout> 30</pageLoadTimeout>
+        <scriptTimeout> 30</scriptTimeout>
+        <implicitlyWaitTimeout>1</implicitlyWaitTimeout>
+        <visitSessionPageSleepTime>100</visitSessionPageSleepTime>
+        <maxVisitSessionPageSleepCount>100</maxVisitSessionPageSleepCount>
+        <maxVisitPageCountWhenException>3</maxVisitPageCountWhenException>
+    </browserSettings>
+
+    <!--///main thread-->
+    <mainThread>
+        <waitTimeForNewSeedUrl>100</waitTimeForNewSeedUrl>
+        <maxWaitForNewSeedUrlCount>0</maxWaitForNewSeedUrlCount>
+
+        <isCircleTask>false</isCircleTask>
+        <startCircleNow>false</startCircleNow>
+        <circleTaskSleepSeconds>5</circleTaskSleepSeconds>
+    </mainThread>
+
+    <!--///redis settings-->
+    <redisSettings>
+        <useRedisToReduceDuplication>false</useRedisToReduceDuplication>
+        <redisIP>192.168.13.60</redisIP>
+        <redisPort>6479</redisPort>
+        <!--<redisIP>127.0.0.1</redisIP>-->
+        <!--<redisPort>6379</redisPort>-->
+        <redisPassword>qz123456</redisPassword>
+        <redisDB>0</redisDB>
+        <redisDbName></redisDbName>
+    </redisSettings>
+
+    <!--///????-->
+    <storageSettings>
+        <saveData>false</saveData>
+        <saveType>mysql</saveType>
+    </storageSettings>
+
+    <!--///hdfs settings-->
+    <hdfsSettings>
+        <useHdfs>false</useHdfs>
+        <hdfsIP>192.168.13.25</hdfsIP>
+        <hdfsPort>9030</hdfsPort>
+    </hdfsSettings>
+</GlobalOption>

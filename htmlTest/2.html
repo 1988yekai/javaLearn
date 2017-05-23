@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta name="keywords" content="四川省公共资源交易中心,四川省公共资源交易信息网,四川省公共资源电子交易平台,四川公共资源交易,四川公共资源交易服务平台" />
+    <meta name="description" content="" />
+    <title>四川省公共资源交易服务平台</title>
+    <link rel="stylesheet" href="/content/css/Master.css" />
+    <script type="text/javascript" src="/content/js/jquery-1.5.min.js"></script>
+
+    <script type="text/javascript">
+        function findWeather() {
+            var cityUrl = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+            $.getScript(cityUrl, function (script, textStatus, jqXHR) {
+                var citytq = remote_ip_info.city;// 获取城市
+                var url = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + citytq + "&day=0&dfc=3";
+                $.ajax({
+                    url: url,
+                    dataType: "script",
+                    scriptCharset: "gbk",
+                    success: function (data) {
+                        var _w = window.SWther.w[citytq][0];
+                        var _f = _w.f1 + "_0.png";
+                        if (new Date().getHours() > 17) {
+                            _f = _w.f2 + "_1.png";
+                        }
+                        var img = "<img width='16px' height='16px' src='http://i2.sinaimg.cn/dy/main/weather/weatherplugin/wthIco/20_20/" + _f
+                                + "' />";
+                        var tq = citytq + " " + img + " " + _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃  " + _w.d1 + _w.p1 + "级";
+                        //#weather自己修改,天气样式自己打断点调试
+                        $('#weather').html(tq);
+                    }
+                });
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<div class="masterTop">
+    <div class="topMenu">
+        <div class="width1K">
+
+            <div class="userOpts">
+                <a href="/Xxbs/Login">登录</a>
+                <a href="/Reg">注册</a>
+            </div>
+
+            <div id="masterClock"></div>
+            <script type="text/javascript">
+                function showLeftTime() {
+                    var now = new Date();
+                    var year = now.getFullYear();
+                    var month = now.getMonth() + 1;
+                    var date = now.getDate();
+                    var hours = now.getHours();
+                    if (hours < 10)
+                        hours = "0" + hours;
+                    var minutes = now.getMinutes();
+                    if (minutes < 10)
+                        minutes = "0" + minutes;
+                    var seconds = now.getSeconds();
+                    if (seconds < 10)
+                        seconds = "0" + seconds;
+                    var day;
+                    switch (now.getDay()) {
+                        case 0:
+                            day = "日";
+                            break;
+                        case 1:
+                            day = "一";
+                            break;
+                        case 2:
+                            day = "二";
+                            break;
+                        case 3:
+                            day = "三";
+                            break;
+                        case 4:
+                            day = "四";
+                            break;
+                        case 5:
+                            day = "五";
+                            break;
+                        case 6:
+                            day = "六";
+                            break;
+
+                    }
+                    document.getElementById("masterClock").innerHTML = "" + year + "年" + month + "月" + date + "日 " + hours + ":" + minutes + ":" + seconds + " 星期" + day;
+                    var timeID = setTimeout(showLeftTime, 1000);
+                }
+                showLeftTime();
+            </script>
+            <div id="weather" style=" float:right;margin-right:80px"></div>
+        </div>
+    </div>
+    <div class="topBanner">
+    </div>
+    <div class="topBottomMenu">
+        <div class="width1K">
+            <div class="channelList">
+                <ul>
+                    <li><a href="/">网站首页</a></li>
+                    <li><a href="/Home/jyxx2">交易信息</a></li>
+                    <li><a href="/Reg">统一注册</a></li>
+                    <li><a href="/Home/jybz">交易保障</a></li>
+                    <li><a href="/Home/ztzxlist">主体资信</a></li>
+                    <li><a href="/Home/jyzk">交易智库</a></li>
+                    <li><a href="/Home/scdt">市场动态</a></li>
+                    <li class="noBg"><a href="/Home/zhjg">综合监督</a></li>
+                </ul>
+            </div>
+            <div class="searchArea">
+                <input type="text" id="searchText" /><input type="button" style="height:19px;" /><a href="javascript:;" id="searchBtn">搜索</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="MasterMid" id="MasterMid">
+
+    <link rel="stylesheet" href="/content/css/second.css" />
+
+    <div class="width1K topbg">
+        <img src="/content/imgs/jyxx2_03.png" />
+    </div>
+    <div class="width1K secondMain">
+        <div class="secondTitle">
+            交易信息
+        </div>
+        <div class="clear"></div>
+
+
+
+        <style>
+            .projecttitle {
+                text-align: center;
+                font-size: 24px;
+                font-weight: bold;
+                line-height: 30px;
+                position: relative;
+            }
+
+            .projecttitle a {
+                position: absolute;
+                right: 30px;
+                cursor: pointer;
+                top: 10px;
+            }
+
+            .projecttitle small {
+                font-size: 14px;
+                color: #888;
+            }
+
+            .projectcontent {
+                padding: 10px 40px;
+                font-size: 14px;
+                font-family: "微软雅黑";
+            }
+
+            .shortDiv {
+                width: 50%;
+                display: inline-block;
+            }
+
+            .projectcontent .projectcontentarea {
+                padding: 5px 0;
+            }
+
+            .tabares {
+                padding: 10px 40px;
+            }
+
+            .tabs {
+                padding: 10px 0 0 0;
+            }
+
+            .tabs .tab {
+                margin-bottom: -1px;
+                font-size: 16px;
+                text-align: center;
+                display: inline-block;
+                padding: 8px 30px;
+                cursor: default;
+            }
+
+            .tabs .active {
+                border: 1px solid #43A2DC;
+                border-bottom: 0;
+                color: #025FA4;
+                background: #fff;
+            }
+
+            .contents {
+                border: 1px solid #43A2DC;
+            }
+
+            .contents .content {
+                display: none;
+                padding: 10px 0;
+                min-height: 400px;
+            }
+
+            .sectiontitle {
+                text-align: left;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .sectiontitle small {
+                color: #888;
+            }
+
+            .tenderC {
+                display: none;
+            }
+        </style>
+        <div>
+            <div class="projecttitle">万源市白沙镇特色小镇（一期工程）建设项目设计<br /><small>项目编号:S20161110（GC）0002　　　创建时间:2016/11/30 14:17:58</small></div>
+            <div class="projectcontent">
+                <div class="projectcontentarea">项目地址 : 万源市白沙镇</div>
+                <div class="shortDiv projectcontentarea">项目行业分类 : </div><div class="shortDiv">项目所属地区 :达州市 </div>
+                <div class="shortDiv projectcontentarea">项目类型 :  市政</div>
+                <div class="shortDiv projectcontentarea">
+                    项目规模 :
+                    原道路拆除工程14871平方米；人行道铺装41020平方米；沥青砼道路14871平方米；20厘米厚砼道路12150平方米；涵洞111米；电力、通信、供水管网、污水管网、排水管网各13490米；公共厕所3座等相关配套工程        </div>
+
+                <div class="shortDiv">
+                    资金来源 :中国农业发展银行重点建设基金
+                </div>
+                <div class="shortDiv projectcontentarea">
+                    联系人 :
+                    无        </div>
+                <div class="shortDiv">
+                    联系人电话 : 0818-8508088        </div>
+            </div>
+            <div class="tabares">
+                <div class="tabs">
+                    <div class="tab">招标公告</div><div class="tab">公告变更</div><div class="tab">开标记录</div><div class="tab">评标公示</div><div class="tab">中标公告</div><div class="tab">签约履行</div>
+                </div>
+                <div class="contents">
+
+                    <div class="content">
+                        <div>
+                            <div class="projecttitle tenderT" nid="43252860-7c3b-4213-9c7e-c60623b28ed2">
+                                万源市白沙镇特色小镇（一期工程）建设项目设计设计<br />
+                                <small>2016/11/15 9:00:00</small>
+                                <a>-</a>
+                            </div>
+
+                            <div class="projectcontent tenderC" nid="43252860-7c3b-4213-9c7e-c60623b28ed2-1" style="display:block">
+                                <div class="projectcontentarea">
+                                    <div><![CDATA[<div><p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: center; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 10pt" align="center"><b><span style="LINE-HEIGHT: 150%; FONT-FAMILY: 仿宋_GB2312; COLOR: windowtext; FONT-SIZE: 18pt">万源市白沙镇特色小镇（一期工程）建设项目设计</span></b></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: center; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 10pt" align="center"><b><span style="LINE-HEIGHT: 150%; FONT-FAMILY: 仿宋_GB2312; COLOR: windowtext; FONT-SIZE: 18pt">招标公告</span></b></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 20pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt">&nbsp;</p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">1. </span></b></span></span></span></span></span></span></span><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">招标条件</span></b></span></span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; TEXT-AUTOSPACE: ; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>1.1 </span></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">本招标项目<u>万源市白沙镇特色小镇（一期工程）建设项目</u>已由</span></span></span></span></span></span><span><span><span><span><span><u><span style="FONT-FAMILY: 仿宋_GB2312">万源市发展和改革局</span></u></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">以</span><span><span><span><span><span><u><span style="FONT-FAMILY: 仿宋_GB2312">《关于万源市白沙镇特色小镇（一期工程）建设项目可行性研究报告的批复》<span>(</span>万发改行审<span>[2016]182</span>号<span>)</span></span></u></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">批准建设</span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">，项目业主为<u>万源市万宝源城市建设投资有限公司 </u>，建设资金来源为</span></span></span></span></span></span><span><span><span><span><span><u><span style="FONT-FAMILY: 仿宋_GB2312">中国农业发展银行重点建设基金</span></u></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">，项目出资比例为<u>政府投资<span>100%</span></u>。</span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">招标人为</span><span><span><span><span><span><u><span style="FONT-FAMILY: 仿宋_GB2312">万源市万宝源城市建设投资有限公司 </span></u></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">。项目已具备招标条件，现对该项目的设计进行公开招标。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: left; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt" align="left"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>1.2 </span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">本招标项目为四川省行政区域内的国家投资工程建设项目，</span><span><span><span><span><span><u><span style="FONT-FAMILY: 仿宋_GB2312">万源市发展和改革局</span></u></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">核准（招标事项核准文号为<u>万发改行审<span>[2016]182</span>号</u></span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">）</span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">的招标组织形式为<u>委托招标</u>。招标人选择（本招标项目在省发展改革委指定比选网站上的项目编号为<u><span>PF20161020011</span></u></span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">）</span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">的招标代理机构是<u>贵州弘典工程建设咨询有限公司。</u></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312">2. </span><span style="FONT-FAMILY: 仿宋_GB2312">项目概况与招标范围</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>2.1 </span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">项目名称：万源市白沙镇特色小镇（一期工程）建设项目</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>2.2 </span></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">建设内容及规模：原道路拆除工程<span>14871</span>平方米；人行道铺装<span>41020</span>平方米；沥青砼道路<span>14871</span>平方米；<span>20</span>厘米厚砼道路<span>12150</span>平方米；涵洞<span>111</span>米；电力、通信、供水管网、污水管网、排水管网各<span>13490</span>米；公共厕所<span>3</span>座等相关配套工程</span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>2.3 </span></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">建设地点：万源市<span>白沙镇</span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>2.4 </span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">招标范围：本项目设计招标。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>2.5</span></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">设计工期：<span> 50</span>日历天，后期服务：项目工程施工开始至竣工验收止。</span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>2.6 </span></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">标段划分：<span>设计一个</span></span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">标段。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">3. </span></b></span></span></span></span></span></span></span></span><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">投标人资格要求</span></b></span></span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>3.1</span></span></span></span></span></span><span style="FONT-FAMILY: 仿宋_GB2312">本次招标</span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">要求投标人须具备<u>市政行业（道路工程）设计乙级及以上</u>资质<u>，<span>2012</span>年以来已完成<span>2</span>个或以上市政公用工程</u>类似项目设计业绩，并在人员、设备、技术、资金等方面具有相应的设计能力。</span></span></span></span></span></span></p>
+                                        <p style="LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 宋体; FONT-SIZE: 12pt"><span><span><span><span><span><span style="LINE-HEIGHT: 150%; FONT-FAMILY: 仿宋_GB2312; FONT-SIZE: 10.5pt"><span>&nbsp;&nbsp; </span>3.2</span></span></span></span></span></span><span><span><span><span><span><span style="LINE-HEIGHT: 150%; FONT-FAMILY: 仿宋_GB2312; FONT-SIZE: 10.5pt">企业注册地不在四川省行政区域内的外地企业<span>,</span>必须办理入川承揽业务验证登记证或带二维码的入川承揽业务信息录入证原件扫描件。</span></span></span></span></span></span><span style="LINE-HEIGHT: 150%; FONT-FAMILY: 仿宋_GB2312; FONT-SIZE: 10.5pt"> </span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span>3.3</span></span></span></span></span></span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">本次招标<u> 不接受</u> 联合体投标。</span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">4. </span></b></span></span></span></span></span></span></span><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">招标文件的获取</span></b></span></span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: 21pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312">4.1</span><span><span><span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">凡有意参加投标者，请于 <u><span>2016</span></u><span> </span>年<u><span>11</span></u>月<u><span>15</span></u>日至<u><span> 2016</span></u><span> </span>年<u><span>11</span></u>月<u><span>19</span></u>日 <u><span>17</span></u><span> </span>时，登录《达州市公共资源交易服务网》网址：<span>http</span>：<span>//www.dzggzy.cn/</span>，凭通过注册认证数字证书下载招标资料（含招标文件、工程量清单、施工图纸等）；未在达州市公共资料交易服务网完成网上注册的企业，按企业注册流程完成注册并领取企业身份证密匙后，方可按以上要求购买招标文件，此为获取招标文件唯一会途径。</span></span></span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: left; LINE-HEIGHT: 150%; TEXT-INDENT: 21pt; MARGIN: 0cm -7.55pt 0pt 0cm; FONT-FAMILY: 'Times New Roman','serif'; TEXT-AUTOSPACE: ; FONT-SIZE: 10.5pt; tab-stops: 68.0pt 215.0pt 400.0pt" align="left"><span style="FONT-FAMILY: 仿宋_GB2312">4.2</span><span style="FONT-FAMILY: 仿宋_GB2312">招标人不提供其他任何报名和招标文件获取的方式。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">5. </span></b></span></span></span></span></span></span></span></span><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">投标文件的递交</span></b></span></span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; TEXT-INDENT: -5.25pt; MARGIN: 0cm 0cm 0pt 5.25pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312">5.1</span><span><span><span><span><span><span style="FONT-FAMILY: 仿宋_GB2312">投标文件递交的截止时间<span>(</span>投标截止时间，下同<span>)</span>为<u><span>2016</span></u>年<u><span>12</span></u>月<u><span>7</span></u>日<u><span>9</span></u>时<u><span>30</span></u>分，地点为<u>达州市公共资源交易中心本项目开标室</u>。</span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312">5.2 </span><span style="FONT-FAMILY: 仿宋_GB2312">逾期送达的或者未送达指定地点的投标文件，招标人不予受理。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">6. </span></b></span></span></span></span></span></span></span><span><span><span><span><span><span><span><span><b><span style="FONT-FAMILY: 仿宋_GB2312">发布公告的媒介</span></b></span></span></span></span></span></span></span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 22pt; TEXT-INDENT: 24.1pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312">本次招标公告同时在达州市公共资源交易服务网和四川省公共资源交易信息网上发布。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; LINE-HEIGHT: 150%; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312">7. </span><span style="FONT-FAMILY: 仿宋_GB2312">联系方式</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">招标人：万源市万宝源城市建设投资有限公司<span> </span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">地<span>&nbsp; </span>址：万源市太平镇</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">邮<span>&nbsp; </span>编：<span>636350</span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">联系人：何先生</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">电话：<span>0818-8508088</span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">传真：<span>0818-8508088</span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt">&nbsp;</p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt">&nbsp;</p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">招标代理机构：贵州弘典工程建设咨询有限公司<span> </span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">地址：成都市锦江区静沙南路<span>18</span>号<span>3</span>栋<span>1404</span>室</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;</span><span>&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">邮编：<span> 61000</span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">联系人：吴先生</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">电话：<span>028-65013213</span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">传真：<span>028-84597486</span></span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt">&nbsp;</p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt">&nbsp;</p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt"><span style="FONT-FAMILY: 仿宋_GB2312"><span>&nbsp;&nbsp; </span></span><span style="FONT-FAMILY: 仿宋_GB2312">达州市公共资源交易服务网联系电话（兼传真）：<span>0818-2181199</span>。</span></p>
+                                        <p style="TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: 'Times New Roman','serif'; FONT-SIZE: 10.5pt">&nbsp;</p></div>]]></![CDATA[<div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                        </div>
+                        <div class="content">
+                        </div>
+                        <div class="content">
+                        </div>
+                        <div class="content">
+                            <div class="projecttitle tenderT" nid="8b805d33-b501-43b8-9635-11ab7c5e4f41">万源市白沙镇特色小镇（一期工程）建设项目设计中标公示<br /><small>2016/12/16 0:00:00</small><a>-</a></div>
+                            <div class="projectcontent tenderC" nid="8b805d33-b501-43b8-9635-11ab7c5e4f41-1" style="display:block">
+                                <div class="projectcontentarea">
+                                    <div><![CDATA[<div><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+                                        <html xmlns="http://www.w3.org/1999/xhtml">
+                                        <head>
+                                            <title>Report</title>
+                                            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+                                            <style type="text/css">
+                                                .sc81f8c88{Font:bold 20pt 宋体;border:0px;border-top-color:transparent;border-top-style:solid;border-top-width:1px;border-left-color:transparent;border-left-style:solid;border-left-width:1px;border-right-color:transparent;border-right-style:solid;border-right-width:1px;border-bottom-color:transparent;border-bottom-style:solid;border-bottom-width:1px;text-align:center;vertical-align:middle;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .sc10dbfdf{Font:12pt 宋体;border:0px;border-top-color:transparent;border-top-style:solid;border-top-width:1px;border-left-color:transparent;border-left-style:solid;border-left-width:1px;border-right-color:transparent;border-right-style:solid;border-right-width:1px;border-bottom-color:transparent;border-bottom-style:solid;border-bottom-width:1px;text-align:right;vertical-align:top;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .s2ec004c1{Font:bold 12pt 宋体;border:0px;border-top-color:transparent;border-top-style:solid;border-top-width:1px;border-left-color:transparent;border-left-style:solid;border-left-width:1px;border-right-color:transparent;border-right-style:solid;border-right-width:1px;border-bottom-color:transparent;border-bottom-style:solid;border-bottom-width:1px;text-align:left;vertical-align:top;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .sf164d3ae{Font:8pt Arial;border:0px;border-top-color:transparent;border-top-style:solid;border-top-width:1px;border-left-color:transparent;border-left-style:solid;border-left-width:1px;border-right-color:transparent;border-right-style:solid;border-right-width:1px;border-bottom-color:Black;border-bottom-style: solid;border-bottom-width:1px;text-align:center;vertical-align:middle;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .s820ba035{Font:12pt 宋体;border:0px;border-top-color:Black;border-top-style: solid;border-top-width:1px;border-left-color:Black;border-left-style: solid;border-left-width:1px;border-right-color:Black;border-right-style: solid;border-right-width:1px;border-bottom-color:Black;border-bottom-style: solid;border-bottom-width:1px;text-align:center;vertical-align:middle;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .s0a14666c{Font:8pt Arial;border:0px;border-top-color:transparent;border-top-style:solid;border-top-width:1px;border-left-color:Black;border-left-style: solid;border-left-width:1px;border-right-color:transparent;border-right-style:solid;border-right-width:1px;border-bottom-color:transparent;border-bottom-style:solid;border-bottom-width:1px;text-align:center;vertical-align:middle;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .s1b1d22ab{Font:bold 12pt 宋体;border:0px;border-top-color:Black;border-top-style: solid;border-top-width:1px;border-left-color:Black;border-left-style: solid;border-left-width:1px;border-right-color:Black;border-right-style: solid;border-right-width:1px;border-bottom-color:Black;border-bottom-style: solid;border-bottom-width:1px;text-align:center;vertical-align:middle;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                                .s6e81b2d5{Font:8pt Arial;border:0px;border-top-color:Black;border-top-style: solid;border-top-width:1px;border-left-color:transparent;border-left-style:solid;border-left-width:1px;border-right-color:transparent;border-right-style:solid;border-right-width:1px;border-bottom-color:transparent;border-bottom-style:solid;border-bottom-width:1px;text-align:center;vertical-align:middle;line-height:1.15em;overflow:hidden;white-space:nowrap;}
+                                            </style>
+
+                                        </head>
+                                        <body>
+                                        <table cellspacing="0" cellpadding="0" border="0" style="border-width:0px;width:748px;border-collapse:collapse;">
+                                            <tr>
+                                                <td class="sc81f8c88" colspan="12" style="width:748px;height:47px;"><div style="width:748px;">中标结果公告</div></td><td style="height:47px;width:2px;border:0px;"></td>
+                                            </tr><tr>
+                                            <td class="sc10dbfdf" colspan="2" rowspan="2" style="width:118px;height:32px;"><div style="width:118px;">项目编号：</div></td><td class="s2ec004c1" colspan="11" style="width:632px;height:21px;"><div style="width:632px;"><p style="margin:0px;text-align:left;">DS20161110（GC）0002</p></div></td>
+                                        </tr><tr>
+                                            <td style="height:11px;width:32px;border:0px;"></td><td style="height:11px;width:149px;border:0px;"></td><td style="height:11px;width:71px;border:0px;"></td><td style="height:11px;width:2px;border:0px;"></td><td style="height:11px;width:77px;border:0px;"></td><td style="height:11px;width:38px;border:0px;"></td><td style="height:11px;width:1px;border:0px;"></td><td style="height:11px;width:63px;border:0px;"></td><td style="height:11px;width:110px;border:0px;"></td><td style="height:11px;width:87px;border:0px;"></td><td style="height:11px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td class="sc10dbfdf" colspan="2" style="width:118px;height:31px;"><div style="width:118px;">项目名称：</div></td><td class="s2ec004c1" colspan="11" style="width:632px;height:31px;"><div style="width:632px;">万源市白沙镇特色小镇（一期工程）建设项目设计</div></td>
+                                        </tr><tr>
+                                            <td class="sc10dbfdf" colspan="2" style="width:118px;height:32px;"><div style="width:118px;">招标人：</div></td><td class="s2ec004c1" colspan="11" style="width:632px;height:32px;"><div style="width:632px;">万源市万宝源城市建设投资有限公司</div></td>
+                                        </tr><tr>
+                                            <td class="sc10dbfdf" colspan="2" rowspan="3" style="width:118px;height:31px;"><div style="width:118px;">项目类别：</div></td><td class="s2ec004c1" colspan="3" style="width:252px;height:20px;"><div style="width:252px;">设计</div></td><td class="sc10dbfdf" colspan="4" rowspan="3" style="width:118px;height:31px;"><div style="width:118px;">招标方式：</div></td><td class="s2ec004c1" colspan="4" rowspan="2" style="width:262px;height:21px;"><div style="width:262px;">公开招标</div></td>
+                                        </tr><tr>
+                                            <td style="height:1px;width:32px;border:0px;"></td><td style="height:1px;width:149px;border:0px;"></td><td style="height:1px;width:71px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td style="height:10px;width:32px;border:0px;"></td><td style="height:10px;width:149px;border:0px;"></td><td style="height:10px;width:71px;border:0px;"></td><td style="height:10px;width:63px;border:0px;"></td><td style="height:10px;width:110px;border:0px;"></td><td style="height:10px;width:87px;border:0px;"></td><td style="height:10px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td class="sc10dbfdf" style="width:117px;height:32px;"><div style="width:117px;">项目地点：</div></td><td style="height:32px;width:1px;border:0px;"></td><td class="s2ec004c1" colspan="10" style="width:630px;height:32px;"><div style="width:630px;">万源市白沙镇</div></td><td style="height:32px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td class="sc10dbfdf" colspan="2" style="width:118px;height:21px;"><div style="width:118px;">项目所在区域：</div></td><td class="s2ec004c1" colspan="3" rowspan="2" style="width:252px;height:31px;"><div style="width:252px;">达州市·万源市</div></td><td class="sc10dbfdf" colspan="3" rowspan="2" style="width:117px;height:31px;"><div style="width:117px;">建筑面积：</div></td><td style="height:21px;width:1px;border:0px;"></td><td class="s2ec004c1" colspan="3" rowspan="2" style="width:260px;height:31px;"><div style="width:260px;">平方米</div></td><td style="height:21px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td style="height:10px;width:117px;border:0px;"></td><td style="height:10px;width:1px;border:0px;"></td><td style="height:10px;width:1px;border:0px;"></td><td style="height:10px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td class="sf164d3ae" style="width:117px;height:24px;"></td><td class="sf164d3ae" style="width:1px;height:24px;"></td><td class="sf164d3ae" style="width:32px;height:24px;"></td><td class="sf164d3ae" style="width:149px;height:24px;"></td><td class="sf164d3ae" style="width:71px;height:24px;"></td><td class="sf164d3ae" style="width:2px;height:24px;"></td><td class="sf164d3ae" style="width:77px;height:24px;"></td><td class="sf164d3ae" style="width:38px;height:24px;"></td><td class="sf164d3ae" style="width:1px;height:24px;"></td><td class="sf164d3ae" style="width:63px;height:24px;"></td><td class="sf164d3ae" style="width:110px;height:24px;"></td><td class="sf164d3ae" style="width:87px;height:24px;"></td><td style="height:24px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td class="s820ba035" colspan="3" style="width:150px;height:47px;"><div style="width:150px;">标段（包）编号</div></td><td class="s820ba035" style="width:149px;height:47px;"><div style="width:149px;">标段（包）名称</div></td><td class="s820ba035" colspan="3" style="width:150px;height:47px;"><div style="width:150px;">中标单位</div></td><td class="s820ba035" colspan="3" style="width:102px;height:47px;"><div style="width:102px;">项目经理</div></td><td class="s820ba035" style="width:110px;height:47px;"><div style="width:110px;">中标价</div></td><td class="s820ba035" style="width:87px;height:47px;"><div style="width:87px;">工期(天）</div></td><td class="s0a14666c" style="width:2px;height:47px;"></td>
+                                        </tr><tr>
+                                            <td class="s1b1d22ab" colspan="3" style="width:150px;height:47px;"><div style="width:150px;">DS20161110（GC）0002-001-001</div></td><td class="s1b1d22ab" style="width:149px;height:47px;"><div style="width:149px;">设计</div></td><td class="s1b1d22ab" colspan="3" style="width:150px;height:47px;"><div style="width:150px;">重庆路威土木工程设计有限公司</div></td><td class="s1b1d22ab" colspan="3" style="width:102px;height:47px;"><div style="width:102px;">洪婷婷</div></td><td class="s1b1d22ab" style="width:110px;height:47px;"><div style="width:110px;">20.00(%)</div></td><td class="s1b1d22ab" style="width:87px;height:47px;"><div style="width:87px;">50</div></td><td class="s0a14666c" style="width:2px;height:47px;"></td>
+                                        </tr><tr>
+                                            <td class="s6e81b2d5" style="width:117px;height:8px;"></td><td class="s6e81b2d5" style="width:1px;height:8px;"></td><td class="s6e81b2d5" style="width:32px;height:8px;"></td><td class="s6e81b2d5" style="width:149px;height:8px;"></td><td class="s6e81b2d5" style="width:71px;height:8px;"></td><td class="s6e81b2d5" style="width:2px;height:8px;"></td><td class="s6e81b2d5" style="width:77px;height:8px;"></td><td class="s6e81b2d5" style="width:38px;height:8px;"></td><td class="s6e81b2d5" style="width:1px;height:8px;"></td><td class="s6e81b2d5" style="width:63px;height:8px;"></td><td class="s6e81b2d5" style="width:110px;height:8px;"></td><td class="s6e81b2d5" style="width:87px;height:8px;"></td><td style="height:8px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td class="sc10dbfdf" colspan="2" rowspan="2" style="width:118px;height:32px;"><div style="width:118px;">公告开始时间：</div></td><td class="s2ec004c1" colspan="3" style="width:252px;height:21px;"><div style="width:252px;"><p style="margin:0px;text-align:left;">2016年12月16日</p></div></td><td class="sc10dbfdf" colspan="4" rowspan="2" style="width:118px;height:32px;"><div style="width:118px;">公告结束时间：</div></td><td class="s2ec004c1" colspan="3" style="width:260px;height:21px;"><div style="width:260px;">2016年12月20日</div></td><td style="height:21px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td style="height:11px;width:32px;border:0px;"></td><td style="height:11px;width:149px;border:0px;"></td><td style="height:11px;width:71px;border:0px;"></td><td style="height:11px;width:63px;border:0px;"></td><td style="height:11px;width:110px;border:0px;"></td><td style="height:11px;width:87px;border:0px;"></td><td style="height:11px;width:2px;border:0px;"></td>
+                                        </tr><tr>
+                                            <td style="height:1px;width:117px;border:0px;"></td><td style="height:1px;width:1px;border:0px;"></td><td style="height:1px;width:32px;border:0px;"></td><td style="height:1px;width:149px;border:0px;"></td><td style="height:1px;width:71px;border:0px;"></td><td style="height:1px;width:2px;border:0px;"></td><td style="height:1px;width:77px;border:0px;"></td><td style="height:1px;width:38px;border:0px;"></td><td style="height:1px;width:1px;border:0px;"></td><td style="height:1px;width:63px;border:0px;"></td><td style="height:1px;width:110px;border:0px;"></td><td style="height:1px;width:87px;border:0px;"></td><td style="height:1px;width:2px;border:0px;"></td>
+                                        </tr>
+                                        </table></body>
+                                        </html></div>]]></!DOCTYPE></![CDATA[<div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+
+                $(".tabares").children(".tabs").children().eq(4).addClass("active");
+                $(".tabares").children(".contents").children().eq(4).show();
+                $(".tabares").each(function () {
+                    $(this).children(".contents").children().eq($(this).children(".tabs").children(".active").index()).show();
+                    $(this).children(".tabs").children(".tab").click(function () {
+                        $(this).parent().parent().children(".contents").children().hide();
+                        $(this).parent().parent().children(".contents").children().eq($(this).index()).show();
+                        $(this).parent().children().removeClass("active");
+                        $(this).addClass("active");
+                    });
+                });
+                $(".tenderT").each(function () {
+                    $(this).click(function () {
+                        if ($(this).children("a").html() == "+") {
+                            $(this).parent().children(".tenderC").hide();
+                            $("div[nid='" + $(this).attr("nid") + "-1']").show();
+                            $(this).parent().children(".tenderT").children("a").html("+");
+                            $(this).children("a").html("-");
+                        } else {
+                            $("div[nid='" + $(this).attr("nid") + "-1']").hide();
+                            $(this).children("a").html("+");
+                        }
+                    });
+                });
+            </script>
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="MasterBottom">
+        <div class="width1K dh">
+            快速导航
+            <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                <option value="">省级平台</option>
+                <option value="http://www.spprec.com">省中心</option>
+                <option value="http://www.cebpubservice.com/">中国招标投标</option>
+            </select>
+            <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                <option value="">市州平台</option>
+                <option value="http://www.bzggzy.gov.cn">巴中市</option>
+            </select>
+            <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                <option value="">外省平台</option>
+                <option value="http://www.hbggzyfwpt.cn">湖北省</option>
+                <option value="http://www.hebpr.cn">河北省</option>
+                <option value="http://www.hnsggzy.com">湖南省</option>
+                <option value="http://www.gzjyfw.gov.cn">贵州省</option>
+            </select>
+            <select onchange="if(this.options[this.selectedIndex].value!=1){window.open(this.options[this.selectedIndex].value)}">
+                <option value="">友情链接</option>
+                <option value="http://www.ggzy.gov.cn/">国家交易平台</option>
+            </select>
+        </div>
+        <div class="footer">
+            Copy right 2016 fw.scztb.gov.cn All Rights Reserved<br />
+            版权所有:四川省政务服务和公共资源交易服务中心&nbsp;&nbsp;备案|许可证编号:蜀ICP备1202408<br />
+            技术支持:四川省政务服务和公共资源交易服务中心<br />
+            联系电话:028-86955567<br />
+            为了获得更好的浏览效果,建议您使用IE8.0及以上版本浏览器登录本站点
+            <script>
+                var _hmt = _hmt || [];
+                (function () {
+                    var hm = document.createElement("script");
+                    hm.src = "//hm.baidu.com/hm.js?db7398697b7b9b3921804c4f8bb2a686";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+            </script>
+
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(
+            findWeather()
+    );
+
+    $(".dh").children("select").change(function () {
+        window.open($(this).val());
+    });
+    $("#searchBtn").click(function () {
+        if ($("#searchText").val() != null && $("#searchText").val() != "")
+            location.href = '/Home/artList?page=1&keyword=' + $("#searchText").val();
+
+    });
+    function jsonDateFormat(jsonDate) {//json日期格式转换为正常格式
+        try {//出自http://www.cnblogs.com/ahjesus 尊重作者辛苦劳动成果,转载请注明出处,谢谢!
+            var date = new Date(parseInt(jsonDate.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            var hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+            var minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+            var seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+            var milliseconds = date.getMilliseconds();
+            return date.getFullYear() + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+        } catch (ex) {
+            return "";
+        }
+    }
+</script>

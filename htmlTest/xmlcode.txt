@@ -1,0 +1,311 @@
+
+                    &lt;div class=&#034;panel-body panel-notice&#034;&gt;
+                        &lt;div class=&#034;col-xs-12 text-center  notice-titlebar&#034;&gt;
+                            &lt;h2&gt;
+                                &lt;span class=&#034;font-heiti&#034;&gt;采购公告&lt;/span&gt;
+                            &lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#034;col-xs-12 text-center bg-default notice-timebar&#034;&gt;
+                            &lt;div class=&#034;notice-time&#034;&gt;
+                                （采购序号：第&amp;nbsp;1&amp;nbsp;次）
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;br/&gt;
+                        &lt;div class=&#034;col-xs-12 notice-content&#034;&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    沈阳市大东区政府采购中心&amp;nbsp;受&amp;nbsp;沈阳市公安局大东分局&amp;nbsp;委托，在中华人民共和国境内以&amp;nbsp;公开招标&amp;nbsp;采购方式开展政府采购活动，发布&amp;nbsp;采购公告&amp;nbsp;如下，欢迎合格的供应商参加政府采购活动。
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;一、项目情况&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;1.项目名称：消防设备采购&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;2.项目概况：&lt;span class=&#034;text-primary&#034;&gt;&lt;a href=&#034;javascript:void(0)&#034;
+                                                    onClick=&#034;queryProjectInfo(&#039;5cc3571a15c1ad4c67b-7bfd&#039;)&#034;&gt;查看&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;3.项目编号：CG17-04-0100&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;4.项目属性：货物&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;5.项目预算：3,000,000.00&amp;nbsp;元&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;6.包组数量：1&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;7.完成数量：0&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;8.采购数量：1&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/br&gt;
+
+                                            &lt;table class=&#034;table table-bordered table-condensed table-proinfo text-center table-border-black&#034;&gt;
+            &lt;thead class=&#034;bg-default&#034;&gt;
+            &lt;tr colspan=&#034;14&#034;&gt;
+                &lt;th height=&#034;35&#034; width=&#034;150&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;包组编号&lt;/span&gt;&lt;/th&gt;
+                &lt;th width=&#034;&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;包组名称&lt;/span&gt;&lt;/th&gt;
+                &lt;th width=&#034;100&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;包组属性&lt;/span&gt;&lt;/th&gt;
+                &lt;th width=&#034;200&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;包组预算&lt;/span&gt;&lt;/th&gt;
+                &lt;th width=&#034;100&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;其他信息&lt;/span&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+
+            &lt;tr colspan=&#034;14&#034;&gt;
+                &lt;td height=&#034;35&#034; width=&#034;150&#034; align=&#034;middle&#034; valign=&#034;middle&#034;&gt;
+                    CG17-04-0100-001
+                &lt;/td&gt;
+                &lt;td width=&#034;&#034; align=&#034;left&#034; valign=&#034;left&#034;&gt;消防设备&lt;/td&gt;
+                &lt;td width=&#034;100&#034; align=&#034;middle&#034; valign=&#034;middle&#034;&gt;货物&lt;/td&gt;
+                &lt;td width=&#034;200&#034; align=&#034;right&#034; valign=&#034;right&#034;&gt;3,000,000.00元&lt;/td&gt;
+                &lt;td width=&#034;100&#034; align=&#034;middle&#034; valign=&#034;middle&#034;&gt;&lt;span class=&#034;text-primary&#034;&gt;&lt;a
+                        href=&#034;javascript:void(0)&#034;
+                        onClick=&#034;qryProjectItemInfo(&#039;5cc3571a15c1ad4c67b-7bfd&#039;,&#039;5cc3571a15c1ad4c67b-7bfc&#039;,&#039;货物&#039;)&#034;&gt;查看&lt;/a&gt;&lt;/span&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+
+
+                           &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;二、合格供应商资格条件&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/br&gt;
+
+                            &lt;table class=&#034;table table-bordered table-condensed  table-proinfo table-border-black&#034;&gt;
+                                &lt;thead class=&#034;bg-default&#034;&gt;
+                                &lt;tr colspan=&#034;14&#034;&gt;
+                                    &lt;th width=&#034;40&#034; align=&#034;center&#034;&gt;
+                                        &lt;span class=&#034;font-heiti&#034;&gt;序号&lt;/span&gt;
+                                    &lt;/th&gt;
+                                    &lt;th width=&#034;100&#034;&gt;
+                                        &lt;span class=&#034;font-heiti&#034;&gt;法规依据&lt;/span&gt;
+                                    &lt;/th&gt;
+                                    &lt;th width=&#034;370&#034;&gt;
+                                        &lt;span class=&#034;font-heiti&#034;&gt;条件描述&lt;/span&gt;
+                                    &lt;/th&gt;
+                                    &lt;th&gt;
+                                        &lt;span class=&#034;font-heiti&#034;&gt;证明要求&lt;/span&gt;
+                                    &lt;/th&gt;
+                                &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+
+                                &lt;tr colspan=&#034;14&#034;&gt;
+                                    &lt;td align=&#034;center&#034;&gt;
+                                        1
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        政府采购法
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        具有独立承担民事责任的能力
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        提供证明材料
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+
+                                &lt;tr colspan=&#034;14&#034;&gt;
+                                    &lt;td align=&#034;center&#034;&gt;
+                                        2
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        政府采购法
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        具有良好的商业信誉和健全的财务会计制度
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        提供证明材料
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+
+                                &lt;tr colspan=&#034;14&#034;&gt;
+                                    &lt;td align=&#034;center&#034;&gt;
+                                        3
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        政府采购法
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        具有履行合同所必需的设备和专业技术能力
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        提供证明材料
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+
+                                &lt;tr colspan=&#034;14&#034;&gt;
+                                    &lt;td align=&#034;center&#034;&gt;
+                                        4
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        政府采购法
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        有依法缴纳税收和社会保障资金的良好记录
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        提供证明材料
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+
+                                &lt;tr colspan=&#034;14&#034;&gt;
+                                    &lt;td align=&#034;center&#034;&gt;
+                                        5
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        政府采购法
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        参加政府采购活动前三年内，在经营活动中没有重大违法记录
+                                    &lt;/td&gt;
+                                    &lt;td&gt;
+                                        提供证明材料
+                                    &lt;/td&gt;
+                                &lt;/tr&gt;
+
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                            &lt;br/&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;三、兼投兼中&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;/div&gt;
+
+    &lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;不适用。&lt;/div&gt;&lt;/div&gt;
+
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;四、现场考察&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+    &lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;不组织现场考察。&lt;/div&gt;&lt;/div&gt;
+
+                             &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;五、采购前答疑会&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+    &lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;不召开采购前答疑会。&lt;/div&gt;&lt;/div&gt;
+
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;六、采购文件&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;1.文件序号：1-1。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;2.文件售价：免费。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;3.获取时间：即日起至&amp;nbsp;2017年06月08日 09:30&amp;nbsp;工作时间。&lt;/div&gt;
+                            &lt;/div&gt;
+                           &lt;div class=&#034;notice-row&#034;&gt;
+            &lt;div class=&#034;text-indent-2em&#034;&gt;4.获取方式：已进入辽宁省政府采购供应商库的供应商，向&amp;nbsp;沈阳市大东区政府采购中心&amp;nbsp;提出获取意向；沈阳市大东区政府采购中心&amp;nbsp;对有获取意向的供应商的供应商库信息进行核对并在中国政府采购网查询无政府采购严重违法失信行为记录后，在沈阳市政府采购网标注供应商获取资格。被标注的供应商可&amp;nbsp;&lt;span class=&#034;text-primary&#034;&gt;&lt;a href=&#034;javascript:void(0)&#034; onClick=&#034;downloadFile1(&#039;G1/M00/00/50/ooYBAFkeoWOABQpKAAt5Jak4NN8204.pdf&#039;)&#034;&gt;下载&lt;/a&gt;&lt;/span&gt;&amp;nbsp;电子版文件；也可前往集中采购机构以外的采购代理机构获取纸质版文件。文件以下载的电子版为准。&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;未进入的，请登录辽宁省本级或所属各市（大连除外）政府采购网进入辽宁省政府采购供应商库后获取。&lt;/div&gt;&lt;/div&gt;
+       &lt;div class=&#034;notice-row&#034;&gt;
+            &lt;div class=&#034;text-indent-2em&#034;&gt;接受联合体参加的，除上述约定外，沈阳市大东区政府采购中心&amp;nbsp;应对联合体成员的供应商库信息进行核对和政府采购严重违法失信行为记录查询。联合体成员存在政府采购严重违法失信行为记录的，视同联合体存在政府采购严重违法失信行为记录。沈阳市大东区政府采购中心&amp;nbsp;还应对联合协议是否载明联合体各方承担的工作、义务和在政府采购合同中各方金额占比进行审查。&lt;/div&gt;
+             &lt;/div&gt;
+    &lt;input type=&#034;hidden&#034; name=&#034;project_id&#034; id=&#034;project_id&#034; value=&#034;5cc3571a15c1ad4c67b-7bfd&#034;&gt;
+    &lt;input type=&#034;hidden&#034; name=&#034;flag&#034; id=&#034;flag&#034; value=&#034;bidd&#034;&gt;
+    &lt;input type=&#034;hidden&#034; name=&#034;path&#034; id=&#034;path&#034; value=&#034;G1/M00/00/50/ooYBAFkeoWOABQpKAAt5Jak4NN8204.pdf&#034;&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;七、响应文件&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;1.文件组成：详见采购文件。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;2.文件格式：详见采购文件。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;3.提交文件及证明材料截止时间：2017年06月08日 09:30。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;4.提交文件及证明材料地点：大东区政府采购中心（大东区津桥路18号 电话：02488720818）。&lt;/div&gt;
+
+                            &lt;/div&gt;
+              &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;5.提交文件及证明材料方式：法定代表人或委托代理人现场密封提交实物件，并携带数字认证证书经&amp;nbsp;沈阳市大东区政府采购中心&amp;nbsp;现场解密电子件；不接受其他方式的提交和解密。所提交的实物件与所解密的电子件不一致的，以电子件为准。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;6.政府采购的信息在政府采购网上向社会公开发布，响应文件应不涉及国家秘密、商业秘密。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;7.提交份数：5&amp;nbsp;份，其中：正本1份，其余为副本。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;8.文件有效期：自提交之日起&amp;nbsp;90&amp;nbsp;日。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                             &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;八、评审相关&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;1.评审方法：详见采购文件。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;2.评审标准：详见采购文件。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;3.评审地点：大东区政府采购中心（大东区津桥路18号 电话：02488720818）。&lt;/div&gt;
+
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;4.开始时间：2017年06月08日 09:30。&lt;/div&gt;
+
+                            &lt;/div&gt;
+
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;
+                                    &lt;span class=&#034;font-heiti&#034;&gt;九、说明&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;1.本公告公示期限为&amp;nbsp;20&amp;nbsp;日。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;2.凡与本次公告相关的事项，详见本公告或向&amp;nbsp;沈阳市大东区政府采购中心&amp;nbsp;咨询。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;3.除特殊说明，本公告所指时间为北京时间，所指日数为日历天数。&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#034;notice-row&#034;&gt;
+                                &lt;div class=&#034;text-indent-2em&#034;&gt;感谢您的支持和参与！&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/br&gt;&lt;br&gt;
+                             &lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;采购人&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;名&amp;emsp;称：沈阳市公安局大东分局&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;地&amp;emsp;址：沈阳市大东区大北关街36-1号&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;联系人：赵建国&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;电&amp;emsp;话：02488508796&lt;/div&gt;&lt;/div&gt;&lt;/br&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;&lt;span class=&#034;font-heiti&#034;&gt;采购代理机构&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;名&amp;emsp;称：沈阳市大东区政府采购中心&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;地&amp;emsp;址：大东区政府采购中心（大东区津桥路18号）&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;联系人：张海龙&lt;/div&gt;&lt;/div&gt;&lt;div class=&#034;notice-row&#034;&gt;&lt;div class=&#034;text-indent-2em&#034;&gt;电&amp;emsp;话：02488728246&lt;/div&gt;&lt;/div&gt;&lt;br/&gt;&lt;br/&gt;&lt;div class=&#034;col-xs-12  text-right&#034;&gt;&lt;div&gt;沈阳市大东区政府采购中心&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;2017年05月19日&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
